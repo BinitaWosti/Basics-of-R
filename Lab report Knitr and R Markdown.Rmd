@@ -1,0 +1,113 @@
+---
+title: "My Lab Report knitr"
+author: "Binita Wosti"
+date: "2026-02-14"
+output:
+  word_document: default
+  html_document: default
+---
+
+library("ggplot2")
+
+#0. codes in chunks #0.1 for loading data
+```{r}
+data(mtcars)
+```
+
+#0.2 show the first few rows of data
+```{r}
+head(mtcars)
+```
+#1. Summary of data/ default is TRUE
+```{r}
+summary(mtcars)
+```
+
+#2.Summary without showing code
+```{r echo=FALSE}
+summary(mtcars)
+```
+
+#3.Summary with code excecution and result shows
+```{r eval=TRUE}
+summary(mtcars)
+```
+
+#4. Summary (stops code execution but still shows code, but output won’t be shown)
+```{r eval= FALSE}
+summary(mtcars)
+```
+
+
+#5. showing both code and output /default is TRUE
+```{r inclue= TRUE}
+summary(mtcars)
+```
+
+#6. The chunk is hidden bcz {r include=FALSE}
+```{r include = FALSE}
+summary(mtcars)
+```
+
+#7. Shows warning/Default is TRUE
+```{r warning=TRUE}
+log(-1)
+```
+
+#8. Does not show warning
+```{r warning=FALSE}
+log(-1)
+```
+
+#9. Plot dimension in inches 
+```{r fig.width=8, fig.height=6}
+plot(cars)
+```
+
+#10. Add caption to plot
+```{r fig.cap="Scatter plot of cars data"}
+plot(cars)
+```
+
+#11. Combine both
+```{r fig.width=10, fig.height=5, fig.cap="Updated car plot"}
+plot(cars)
+```
+
+#12. Plot (Violin plot) with code - mpg data
+```{r}
+library(ggplot2)
+ggplot(mpg, aes(drv, cty, colour = class)) +
+geom_violin() +
+labs(x = "Drive Type",
+    y = "City Mileage",
+    title = "City Mileage by Drive Type")+
+theme_bw() +
+  theme(
+    legend.position = "right",
+    legend.key.size = unit(0.2, "cm"),
+    axis.title = element_text(size = 15),   
+    axis.text.x = element_text(size = 12, angle = 45, hjust =1),    
+    panel.grid.major = element_blank(),     
+    panel.grid.minor = element_blank()        
+  )
+```
+
+#13. Plot without showing code/adding library(ggplot2) is additional 
+```{r echo=FALSE}
+library(ggplot2)
+ggplot(mpg, aes(drv, cty, colour = class)) +
+geom_violin() +
+labs(x = "Drive Type",
+    y = "City Mileage",
+    title = "City Mileage by Drive Type")+
+theme_bw() +
+  theme(
+    legend.position = "right",
+    legend.key.size = unit(0.2, "cm"),
+    axis.title = element_text(size = 15),   
+    axis.text.x = element_text(size = 12, angle = 45, hjust =1),    
+    panel.grid.major = element_blank(),     
+    panel.grid.minor = element_blank()        
+  )
+```
